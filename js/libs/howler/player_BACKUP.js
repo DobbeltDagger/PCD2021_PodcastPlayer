@@ -59,6 +59,7 @@ Player.prototype = {
       sound = data.howl;
     } else {
       sound = data.howl = new Howl({
+        // src: ['./audio/' + data.file + '.webm', './audio/' + data.file + '.mp3'],
         src: ['../audio/' + data.file + '.webm', '../audio/' + data.file + '.mp3'],
         html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
         onplay: function() {
@@ -273,7 +274,6 @@ Player.prototype = {
   }
 };
 
-
 // Setup our new audio player class and pass it the playlist.
 var player = new Player([
   {
@@ -293,29 +293,52 @@ var player = new Player([
   }
 ]);
 
-
 // Bind our player controls.
-playBtn.addEventListener('click', function() { player.play(); });
-pauseBtn.addEventListener('click', function() { player.pause(); });
-prevBtn.addEventListener('click', function() { player.skip('prev'); });
-nextBtn.addEventListener('click', function() { player.skip('next'); });
-waveform.addEventListener('click', function(event) { player.seek(event.clientX / window.innerWidth); });
-playlistBtn.addEventListener('click', function() { player.togglePlaylist(); });
-playlist.addEventListener('click', function() { player.togglePlaylist(); });
-volumeBtn.addEventListener('click', function() { player.toggleVolume(); });
-volume.addEventListener('click', function() { player.toggleVolume(); });
-
+playBtn.addEventListener('click', function() {
+  player.play();
+});
+pauseBtn.addEventListener('click', function() {
+  player.pause();
+});
+prevBtn.addEventListener('click', function() {
+  player.skip('prev');
+});
+nextBtn.addEventListener('click', function() {
+  player.skip('next');
+});
+waveform.addEventListener('click', function(event) {
+  player.seek(event.clientX / window.innerWidth);
+});
+playlistBtn.addEventListener('click', function() {
+  player.togglePlaylist();
+});
+playlist.addEventListener('click', function() {
+  player.togglePlaylist();
+});
+volumeBtn.addEventListener('click', function() {
+  player.toggleVolume();
+});
+volume.addEventListener('click', function() {
+  player.toggleVolume();
+});
 
 // Setup the event listeners to enable dragging of volume slider.
 barEmpty.addEventListener('click', function(event) {
   var per = event.layerX / parseFloat(barEmpty.scrollWidth);
   player.volume(per);
 });
-sliderBtn.addEventListener('mousedown', function() { window.sliderDown = true; });
-sliderBtn.addEventListener('touchstart', function() { window.sliderDown = true; });
-volume.addEventListener('mouseup', function() { window.sliderDown = false; });
-volume.addEventListener('touchend', function() { window.sliderDown = false; });
-
+sliderBtn.addEventListener('mousedown', function() {
+  window.sliderDown = true;
+});
+sliderBtn.addEventListener('touchstart', function() {
+  window.sliderDown = true;
+});
+volume.addEventListener('mouseup', function() {
+  window.sliderDown = false;
+});
+volume.addEventListener('touchend', function() {
+  window.sliderDown = false;
+});
 
 var move = function(event) {
   if (window.sliderDown) {
@@ -329,7 +352,6 @@ var move = function(event) {
 
 volume.addEventListener('mousemove', move);
 volume.addEventListener('touchmove', move);
-
 
 // Setup the "waveform" animation.
 var wave = new SiriWave({
