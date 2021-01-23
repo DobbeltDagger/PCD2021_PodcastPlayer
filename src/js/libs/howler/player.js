@@ -59,6 +59,11 @@ var Player = function(playlist) {
     var trackLength = document.createElement('div');
     trackLength.className = 'list-contributor';
     trackLength.innerHTML = song.trackLength;
+    // Rss
+    var rssElm = document.createElement('div');
+    rssElm.className = 'list-contributor';
+    rssElm.innerHTML = song.rss;
+
 
     // nest some info
     listSong.appendChild(icon);
@@ -66,6 +71,7 @@ var Player = function(playlist) {
     listSong.appendChild(desc);
     listSong.appendChild(contributor);
     listSong.appendChild(trackLength);
+    listSong.appendChild(rssElm);
     listSong.id = 'song' + trackNr;
 
     list.appendChild(listSong); // adds to playlist -> list elm
@@ -275,7 +281,8 @@ Player.prototype = {
 
     // Determine our current seek position.
     var seek = sound.seek() || 0;
-    timer.innerHTML = self.formatTime(Math.round(seek));
+    // timer.innerHTML = self.formatTime(Math.round(seek));
+    duration.innerHTML = self.formatTime(Math.round(seek)) + " / " + self.formatTime(Math.round(sound.duration()));
     progress.style.width = (((seek / sound.duration()) * 100) || 0) + '%';
 
     // If the sound is still playing, continue stepping.
@@ -335,6 +342,7 @@ var player = new Player([
     desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
     contributor: "Anders Visti",
     trackLength: "1:00",
+    rss: "rssfeed",
     howl: null
   },
   {
@@ -343,22 +351,25 @@ var player = new Player([
     desc: "Here's a long description of the 80s vibe song",
     contributor: "Anders Visti",
     trackLength: "1:00",
+    rss: "rssfeed",
     howl: null
   },
   {
     title: 'Running Out',
     file: 'running_out',
-    desc: "Here's a long description of the Running Out song",
+    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
     contributor: "Anders Visti",
-    trackLength: "1:00",    
+    trackLength: "1:00",
+    rss: "rssfeed",    
     howl: null
   },
   {
     title: 'Rave Digger',
     file: 'rave_digger',
-    desc: "Here's a long description of the Rave Digger song",
+    desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
     contributor: "Anders Visti",
     trackLength: "1:00",
+    rss: "rssfeed",
     howl: null
   },
   {
@@ -366,7 +377,8 @@ var player = new Player([
     file: '80s_vibe',
     desc: "Here's a long description of the 80s vibe song",
     contributor: "Anders Visti",
-    trackLength: "1:00",    
+    trackLength: "1:00",
+    rss: "rssfeed",    
     howl: null
   },
   {
@@ -374,15 +386,17 @@ var player = new Player([
     file: 'running_out',
     desc: "Here's a long description of the Running Out song",
     contributor: "Anders Visti",
-    trackLength: "1:00",    
+    trackLength: "1:00",
+    rss: "rssfeed",    
     howl: null
   },
   {
     title: 'Running Out',
     file: 'running_out',
-    desc: "Here's a long description of the Running Out song",
+    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
     contributor: "Anders Visti",
-    trackLength: "1:00",    
+    trackLength: "1:00",
+    rss: "rssfeed",    
     howl: null
   } 
 ]);

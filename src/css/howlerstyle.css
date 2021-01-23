@@ -241,7 +241,7 @@ p {
   position: absolute;
   top: 20%; /* 0; */
   left: 0;
-  padding: 1rem;
+  padding: 1rem 0px;
   /* border: 1px solid white; */
   background: rgba(0,0,0,0.5);
   display: -webkit-box;
@@ -259,21 +259,6 @@ p {
   align-items: flex-start; /* center; */
   flex-wrap: wrap;
   overflow-y: scroll;
-  /*
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  */
 }
 .list-song {
   /* width: 50%; /* 100%; */
@@ -284,7 +269,7 @@ p {
   text-align: left; /* center; */
   /* font-weight: bold; */
   color: #FEFEFE;
-  padding: 0.5rem 1rem;
+  padding: 0.65rem 1rem;
   position: relative;
   overflow: hidden;
 }
@@ -308,7 +293,7 @@ p {
 /* icon */
 .list-icon {
   position: absolute;
-  top: 0.75rem; /* 0px; */
+  top: 0.8rem; /* 0px; */
   left: 1rem; /* 0px; */
   width: 28px;
   height: 28px;
@@ -328,11 +313,11 @@ p {
 }
 /* description */
 .list-description {
-  color: pink;
+  color: #FEFEFE;
   margin-left: 50px;
 }
 .list-contributor {
-  color: lightgreen;
+  color: lightblue;
   margin-left: 50px;
 }
 .list-trackLength {

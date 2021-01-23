@@ -75,3 +75,41 @@ body {
 /* ******************************************************************************* */
 /* typography */
 
+
+
+/* logo */
+
+#logo {
+  position: relative;
+
+}
+
+#logo a.round {
+  position: fixed;
+  top: -3px;
+  left: -3px;
+  width: 120px;
+  height: auto;
+  /* float: left; */
+  display: block;
+}
+
+#logo a.round img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* text logo when shown */
+#logo a.text {
+  position: absolute;
+  top: 19px;
+  left: 18px;
+  display: block;
+  width: auto;
+  float: left;
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(32,16,48,0.82);
+  z-index: 1000;
+}
+
