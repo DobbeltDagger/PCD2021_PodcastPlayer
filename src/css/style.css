@@ -81,7 +81,7 @@ body {
 
 #logo {
   position: relative;
-
+  z-index: 1000;
 }
 
 #logo a.round {

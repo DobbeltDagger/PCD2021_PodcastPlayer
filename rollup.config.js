@@ -1,6 +1,6 @@
-// import autoprefixer from 'autoprefixer';
-// import postcss from 'postcss';
-// import sass from 'rollup-plugin-sass';
+import autoprefixer from 'autoprefixer';
+import postcss from 'postcss';
+import sass from 'rollup-plugin-sass';
 // import scss from 'rollup-plugin-scss';
 import copy from 'rollup-plugin-copy';
 import resolve from '@rollup/plugin-node-resolve';
@@ -19,6 +19,18 @@ export default {
     sourcemap: true
   },
   plugins: [
+    postcss({
+      preprocessor: (content, id) => new Promise((resolve, reject) => {
+        const result = sass.renderSync({ file: id })
+        resolve({ code: result.css.toString() })
+      }),
+      plugins: [
+        autoprefixer
+      ],
+      sourceMap: true,
+      extract: true,
+      extensions: ['.sass','.css']
+    }),    
     copy({
       targets: [
         { src: 'src/audio/**/*', dest: 'dist/audio' },
