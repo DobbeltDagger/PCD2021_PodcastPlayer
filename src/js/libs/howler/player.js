@@ -27,14 +27,48 @@ var Player = function(playlist) {
   track.innerHTML = '1. ' + playlist[0].title;
 
   // Setup the playlist display.
+  let trackNr = 0;
   playlist.forEach(function(song) {
-    var div = document.createElement('div');
-    div.className = 'list-song';
-    div.innerHTML = song.title;
-    div.onclick = function() {
+
+    trackNr++;
+    var listSong = document.createElement('div');
+    listSong.className = 'list-song';
+    // div.innerHTML = song.title;
+    listSong.onclick = function() {
       player.skipTo(playlist.indexOf(song));
     };
-    list.appendChild(div);
+
+    // Visti adds more info
+    // icon
+    var icon = document.createElement('div');
+    icon.className = 'list-icon';
+    icon.innerHTML = ""; // "*";
+    // title
+    var title = document.createElement('div');
+    title.className = 'list-title';
+    title.innerHTML = trackNr + ". " + song.title;
+    // description
+    var desc = document.createElement('div');
+    desc.className = 'list-description';
+    desc.innerHTML = song.desc;
+    // contributor
+    var contributor = document.createElement('div');
+    contributor.className = 'list-contributor';
+    contributor.innerHTML = song.contributor;
+    // trackLength
+    var trackLength = document.createElement('div');
+    trackLength.className = 'list-contributor';
+    trackLength.innerHTML = song.trackLength;
+
+    // nest some info
+    listSong.appendChild(icon);
+    listSong.appendChild(title);
+    listSong.appendChild(desc);
+    listSong.appendChild(contributor);
+    listSong.appendChild(trackLength);
+    listSong.id = 'song' + trackNr;
+
+    list.appendChild(listSong); // adds to playlist -> list elm
   });
 };
 
@@ -42,6 +76,8 @@ var Player = function(playlist) {
 //////////////////////////////////////////////
 // Player prototype
 Player.prototype = {
+
+  ////////////////////////////////////////////////////////////
   /**
    * Play a song in the playlist.
    * @param  {Number} index Index of the song in the playlist (leave empty to play the first or current).
@@ -126,6 +162,8 @@ Player.prototype = {
     self.index = index;
   },
 
+
+  ////////////////////////////////////////////////////////////
   /**
    * Pause the currently playing track.
    */
@@ -143,6 +181,8 @@ Player.prototype = {
     pauseBtn.style.display = 'none';
   },
 
+
+  ////////////////////////////////////////////////////////////
   /**
    * Skip to the next or previous track.
    * @param  {String} direction 'next' or 'prev'.
@@ -167,6 +207,8 @@ Player.prototype = {
     self.skipTo(index);
   },
 
+
+  ////////////////////////////////////////////////////////////
   /**
    * Skip to a specific track based on its playlist index.
    * @param  {Number} index Index in the playlist.
@@ -186,6 +228,8 @@ Player.prototype = {
     self.play(index);
   },
 
+
+  ////////////////////////////////////////////////////////////
   /**
    * Set the volume and update the volume slider display.
    * @param  {Number} val Volume between 0 and 1.
@@ -202,6 +246,8 @@ Player.prototype = {
     sliderBtn.style.left = (window.innerWidth * barWidth + window.innerWidth * 0.05 - 25) + 'px';
   },
 
+
+  ////////////////////////////////////////////////////////////
   /**
    * Seek to a new position in the currently playing track.
    * @param  {Number} per Percentage through the song to skip.
@@ -218,9 +264,9 @@ Player.prototype = {
     }
   },
 
-  /**
-   * The step called within requestAnimationFrame to update the playback position.
-   */
+
+  ////////////////////////////////////////////////////////////
+  // The step called within requestAnimationFrame to update the playback position.
   step: function() {
     var self = this;
 
@@ -238,9 +284,9 @@ Player.prototype = {
     }
   },
 
-  /**
-   * Toggle the playlist display on/off.
-   */
+
+  ////////////////////////////////////////////////////////////
+  // Toggle the playlist display on/off.
   togglePlaylist: function() {
     var self = this;
     var display = (playlist.style.display === 'block') ? 'none' : 'block';
@@ -251,9 +297,9 @@ Player.prototype = {
     playlist.className = (display === 'block') ? 'fadein' : 'fadeout';
   },
 
-  /**
-   * Toggle the volume display on/off.
-   */
+
+  ////////////////////////////////////////////////////////////
+  // Toggle the volume display on/off.
   toggleVolume: function() {
     var self = this;
     var display = (volume.style.display === 'block') ? 'none' : 'block';
@@ -264,6 +310,8 @@ Player.prototype = {
     volume.className = (display === 'block') ? 'fadein' : 'fadeout';
   },
 
+
+  ////////////////////////////////////////////////////////////
   /**
    * Format the time from seconds to M:SS.
    * @param  {Number} secs Seconds to format.
@@ -278,26 +326,68 @@ Player.prototype = {
 };
 
 
+//////////////////////////////////////////////////////////////////////////////////////
 // Setup our new audio player class and pass it the playlist.
 var player = new Player([
   {
     title: 'Rave Digger',
     file: 'rave_digger',
+    desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
+    contributor: "Anders Visti",
+    trackLength: "1:00",
     howl: null
   },
   {
     title: '80s Vibe',
     file: '80s_vibe',
+    desc: "Here's a long description of the 80s vibe song",
+    contributor: "Anders Visti",
+    trackLength: "1:00",
     howl: null
   },
   {
     title: 'Running Out',
     file: 'running_out',
+    desc: "Here's a long description of the Running Out song",
+    contributor: "Anders Visti",
+    trackLength: "1:00",    
     howl: null
-  }
+  },
+  {
+    title: 'Rave Digger',
+    file: 'rave_digger',
+    desc: "Here's a long description of the Rave Digger song",
+    contributor: "Anders Visti",
+    trackLength: "1:00",
+    howl: null
+  },
+  {
+    title: '80s Vibe',
+    file: '80s_vibe',
+    desc: "Here's a long description of the 80s vibe song",
+    contributor: "Anders Visti",
+    trackLength: "1:00",    
+    howl: null
+  },
+  {
+    title: 'Running Out',
+    file: 'running_out',
+    desc: "Here's a long description of the Running Out song",
+    contributor: "Anders Visti",
+    trackLength: "1:00",    
+    howl: null
+  },
+  {
+    title: 'Running Out',
+    file: 'running_out',
+    desc: "Here's a long description of the Running Out song",
+    contributor: "Anders Visti",
+    trackLength: "1:00",    
+    howl: null
+  } 
 ]);
 
-
+//////////////////////////////////////////////////////////////////////////////////////
 // Bind our player controls.
 playBtn.addEventListener('click', function() { player.play(); });
 pauseBtn.addEventListener('click', function() { player.pause(); });
@@ -321,6 +411,8 @@ volume.addEventListener('mouseup', function() { window.sliderDown = false; });
 volume.addEventListener('touchend', function() { window.sliderDown = false; });
 
 
+////////////////////////////////////////////////////////////
+// move
 var move = function(event) {
   if (window.sliderDown) {
     var x = event.clientX || event.touches[0].clientX;
@@ -335,6 +427,7 @@ volume.addEventListener('mousemove', move);
 volume.addEventListener('touchmove', move);
 
 
+////////////////////////////////////////////////////////////
 // Setup the "waveform" animation.
 var wave = new SiriWave({
   container: waveform,
@@ -347,6 +440,8 @@ var wave = new SiriWave({
 });
 wave.start();
 
+
+////////////////////////////////////////////////////////////
 // Update the height of the wave animation.
 // These are basically some hacks to get SiriWave.js to do what we want.
 var resize = function() {
@@ -372,5 +467,7 @@ var resize = function() {
 };
 
 
+////////////////////////////////////////////////////////////
+// resize
 window.addEventListener('resize', resize);
 resize();
