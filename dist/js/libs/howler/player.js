@@ -9,7 +9,7 @@
  */
 
 // Cache references to DOM elements.
-var elms = ['track', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
+var elms = ['track', 'subtitle', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -24,7 +24,8 @@ var Player = function(playlist) {
   this.index = 0;
 
   // Display the title of the first track.
-  track.innerHTML = '1. ' + playlist[0].title;
+  track.innerHTML = '-'; // '1. ' + playlist[0].title;
+  subtitle.innerHTML = '-'; // "Hey der!";
 
   // Setup the playlist display.
   let trackNr = 0;
@@ -46,7 +47,7 @@ var Player = function(playlist) {
     // title
     var title = document.createElement('div');
     title.className = 'list-title';
-    title.innerHTML = trackNr + ". " + song.title;
+    title.innerHTML = trackNr + ". " + song.title + " (" + song.duration + ')';
     // description
     var desc = document.createElement('div');
     desc.className = 'list-description';
@@ -55,10 +56,10 @@ var Player = function(playlist) {
     var contributor = document.createElement('div');
     contributor.className = 'list-contributor';
     contributor.innerHTML = song.contributor;
-    // trackLength
-    var trackLength = document.createElement('div');
-    trackLength.className = 'list-contributor';
-    trackLength.innerHTML = song.trackLength;
+    // duration
+    var duration = document.createElement('div');
+    duration.className = 'list-contributor';
+    duration.innerHTML = song.duration;
     // Rss
     var rssElm = document.createElement('div');
     rssElm.className = 'list-contributor';
@@ -70,7 +71,7 @@ var Player = function(playlist) {
     listSong.appendChild(title);
     listSong.appendChild(desc);
     listSong.appendChild(contributor);
-    listSong.appendChild(trackLength);
+    listSong.appendChild(duration);
     listSong.appendChild(rssElm);
     listSong.id = 'song' + trackNr;
 
@@ -153,6 +154,7 @@ Player.prototype = {
 
     // Update the track display.
     track.innerHTML = (index + 1) + '. ' + data.title;
+    subtitle.innerHTML = data.desc;
 
     // Show the pause button.
     if (sound.state() === 'loaded') {
@@ -295,12 +297,11 @@ Player.prototype = {
   ////////////////////////////////////////////////////////////
   // Toggle the playlist display on/off.
   togglePlaylist: function() {
-    var self = this;
     var display = (playlist.style.display === 'block') ? 'none' : 'block';
 
     setTimeout(function() {
       playlist.style.display = display;
-    }, (display === 'block') ? 0 : 500);
+    }, (display === 'block') ? 0 : 450); // 500);
     playlist.className = (display === 'block') ? 'fadein' : 'fadeout';
   },
 
@@ -308,12 +309,11 @@ Player.prototype = {
   ////////////////////////////////////////////////////////////
   // Toggle the volume display on/off.
   toggleVolume: function() {
-    var self = this;
     var display = (volume.style.display === 'block') ? 'none' : 'block';
 
     setTimeout(function() {
       volume.style.display = display;
-    }, (display === 'block') ? 0 : 500);
+    }, (display === 'block') ? 0 : 450); // 500);
     volume.className = (display === 'block') ? 'fadein' : 'fadeout';
   },
 
@@ -341,7 +341,7 @@ var player = new Player([
     file: 'rave_digger',
     desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
     contributor: "Anders Visti",
-    trackLength: "1:00",
+    duration: "1:00",
     rss: "rssfeed",
     howl: null
   },
@@ -350,7 +350,7 @@ var player = new Player([
     file: '80s_vibe',
     desc: "Here's a long description of the 80s vibe song",
     contributor: "Anders Visti",
-    trackLength: "1:00",
+    duration: "1:00",
     rss: "rssfeed",
     howl: null
   },
@@ -359,7 +359,7 @@ var player = new Player([
     file: 'running_out',
     desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
     contributor: "Anders Visti",
-    trackLength: "1:00",
+    duration: "1:00",
     rss: "rssfeed",    
     howl: null
   },
@@ -368,7 +368,7 @@ var player = new Player([
     file: 'rave_digger',
     desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
     contributor: "Anders Visti",
-    trackLength: "1:00",
+    duration: "1:00",
     rss: "rssfeed",
     howl: null
   },
@@ -377,7 +377,7 @@ var player = new Player([
     file: '80s_vibe',
     desc: "Here's a long description of the 80s vibe song",
     contributor: "Anders Visti",
-    trackLength: "1:00",
+    duration: "1:00",
     rss: "rssfeed",    
     howl: null
   },
@@ -386,7 +386,7 @@ var player = new Player([
     file: 'running_out',
     desc: "Here's a long description of the Running Out song",
     contributor: "Anders Visti",
-    trackLength: "1:00",
+    duration: "1:00",
     rss: "rssfeed",    
     howl: null
   },
@@ -395,7 +395,7 @@ var player = new Player([
     file: 'running_out',
     desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
     contributor: "Anders Visti",
-    trackLength: "1:00",
+    duration: "1:00",
     rss: "rssfeed",    
     howl: null
   } 
@@ -459,6 +459,7 @@ wave.start();
 // Update the height of the wave animation.
 // These are basically some hacks to get SiriWave.js to do what we want.
 var resize = function() {
+  console.log("player resize was run!");
   var height = window.innerHeight * 0.3;
   var width = window.innerWidth;
   wave.height = height;

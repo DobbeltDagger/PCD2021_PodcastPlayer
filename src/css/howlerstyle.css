@@ -13,7 +13,7 @@ body {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  background: orange;
+  background: transparent; /* orange; */
   /* background: #bb71f3;
   background: -moz-linear-gradient(-45deg, #bb71f3 0%, #3d4d91 100%);
   background: -webkit-linear-gradient(-45deg, #bb71f3 0%, #3d4d91 100%);

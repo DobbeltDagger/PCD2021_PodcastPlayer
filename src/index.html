@@ -4,10 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PCD2021, podcast player</title>
+  <link rel="shortcut icon" href="./favicon.png" type="image/png">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/howlerstyle.css">
 </head>
 <body>
+  <!-- animated backdrop -->
+  <div id='backdrop'></div>
+
+  <!-- page stuff -->
   <div class="pageWrapper">
 
     <!-- howler stuff -->
@@ -63,8 +68,12 @@
   </div> <!-- eof pageWrapper -->
 
   <!-- Scripts -->
-  <script src="../js/libs/howler/howler.core.js"></script>
+  <script src="../js/libs/howler/howler.core.min.js"></script>
   <script src="./js/libs/howler/siriwave.js"></script>
-  <script src="./js/libs/howler/player.js"></script>  
+  <script src="./js/libs/howler/player.js"></script>
+  <script src="./js/libs/p5.min.js"></script>
+  <script src="./js/sketch.js"></script>
+
+  <script src='./index.js' type='module'></script>
 </body>
 </html>

@@ -24,14 +24,10 @@ sup { top: -0.5em; }
 sub { bottom: -0.25em }
 
 * {
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
   hyphens: auto;
 }
 
 *, *:after, *:before {
-  -webkit-box-sizing:border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -75,10 +71,7 @@ body {
 /* ******************************************************************************* */
 /* typography */
 
-
-
 /* logo */
-
 #logo {
   position: relative;
   z-index: 1000;
@@ -113,3 +106,21 @@ body {
   z-index: 1000;
 }
 
+
+/* ******************************************************************************* */
+/* animated backdrop */
+
+#backdrop {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  background-color: tomato;
+}
+
+#backdrop #backdropCanvas {
+  border: 10px solid purple;
+  z-index: 100;
+  visibility: visible;
+}

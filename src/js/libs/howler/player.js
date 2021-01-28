@@ -459,6 +459,7 @@ wave.start();
 // Update the height of the wave animation.
 // These are basically some hacks to get SiriWave.js to do what we want.
 var resize = function() {
+  console.log("player resize was run!");
   var height = window.innerHeight * 0.3;
   var width = window.innerWidth;
   wave.height = height;
