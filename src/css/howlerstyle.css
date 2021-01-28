@@ -189,7 +189,8 @@ p {
   left: 0;
   width: 0%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  background-color: rgba(255,255,255,0.15);
   z-index: -1;
 }
 
@@ -232,7 +233,7 @@ p {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(255,165,0,0.5); /* rgba(0, 0, 0, 0.5); */
+  background-color: rgba(17, 10, 20, 0.5); /* rgba(255,165,0,0.5); /* rgba(0, 0, 0, 0.5); */
   display: block; /* none; */
 }
 #list {

@@ -116,11 +116,13 @@ body {
   height: 100vh;
   top: 0px;
   left: 0px;
-  background-color: tomato;
+  background-color: transparent; /*  tomato; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -2; /* must have this before I can see progress bar at z-index -1 */
 }
 
 #backdrop #backdropCanvas {
-  border: 10px solid purple;
-  z-index: 100;
-  visibility: visible;
+  /* border: 1px solid purple; */
 }

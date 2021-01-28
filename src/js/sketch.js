@@ -5,16 +5,24 @@ const numberOfParticles = 400;
 const noiseScale = 1.2e11;
 const backgroundColor = `rgb(17, 10, 20)`;
 const particleSize = 1.4;
-const pickSpeed = () => random([0.2, 0.5, 0.5, 0.8, 1, 2]);
+// const pickSpeed = () => random([0.2, 0.5, 0.5, 0.8, 1, 2]);
+// const pickSpeed = () => random([0.1, 0.25, 0.25, 0.4, 0.5, 1]);
+const pickSpeed = () => random([0.1, 0.15, 0.25, 0.35, 0.4, 0.5]);
 const bothDirections = true;
+const cnvSize = {
+  x: 1920, // 960,
+  y: 1080, // 540
+};
+
 
 ////////////////////////////////////////////////////
 function setup() {
-  const myCanvas = createCanvas(windowWidth, windowHeight);
+  // const myCanvas = createCanvas(windowWidth, windowHeight);
+  const myCanvas = createCanvas(cnvSize.x, cnvSize.y);
   myCanvas.id('backdropCanvas');
   myCanvas.parent('backdrop');
 
-  //background(backgroundColor);
+  background(backgroundColor);
   for (let i = 0; i < numberOfParticles; i++) {
     particles[i] = new Particle(random(width), random(height));
   }
