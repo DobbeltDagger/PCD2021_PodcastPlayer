@@ -25,8 +25,8 @@ var Player = function(playlist) {
   this.index = 0;
 
   // Display the title of the first track.
-  track.innerHTML = '-'; // '1. ' + playlist[0].title;
-  subtitle.innerHTML = '-'; // "Hey der!";
+  track.innerHTML = '';
+  subtitle.innerHTML = '';
 
   // Setup the playlist display.
   let trackNr = 0;
@@ -48,7 +48,7 @@ var Player = function(playlist) {
     // title
     var title = document.createElement('div');
     title.className = 'list-title';
-    title.innerHTML = trackNr + ". " + song.title + " (" + song.duration + ')';
+    title.innerHTML = trackNr + ". " + song.title; /* + " (" + song.duration + ')'; */
     // description
     var desc = document.createElement('div');
     desc.className = 'list-description';

@@ -78,7 +78,7 @@ body {
   letter-spacing: 0.01em;
   user-select: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  color: #F0F0F0;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 
@@ -89,6 +89,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Oswald', sans-serif;
   font-weight: 500;
   margin: 0px 0px 1rem 0px;
+  letter-spacing: 0.02em;
 }
 
 p {
@@ -144,36 +145,35 @@ p {
 
 #titleWrapper {
   position: absolute;
-  bottom: 90px;
+  bottom: 60px;
   left: 0px;
   width: 100vw;
-  min-height: 200px;
-  background-color: black;
-  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5); /* black; */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-
-
-
-/* ****************************************************************************** */
-/* Titles */
-#title {
-  position: absolute;
-  width: 100%;
-  /* top: 1rem; /* 3%; */
-  bottom: 90px;
-  text-align: center;
-  opacity: 1; /* 0.9; */
-  font-weight: 300;
-  /* color: #fff; */
+#track {
+  flex: 0 0 460px; /* 20%; */
+  /* color: tomato; */
+  padding: 1rem;
+  font-weight: bold;
 }
 #subtitle {
+  flex: 0 0 50%;
   max-width: 800px;
+  padding: 1rem 2rem 1rem 0px;
 }
+#metadata {
+  flex: 0 0 30%;
+  max-width: 800px;
+  padding: 1rem;
+}
+
+
 
 /* ****************************************************************************** */
 /* controls */
@@ -380,12 +380,13 @@ p {
 /* title */
 .list-title {
   font-family: 'Oswald', sans-serif;
-  font-size: 24px; /* 50px; */
+  font-size: 21px; /* 24px; /* 50px; */
   line-height: 1.35em; /* 120px; */
   /* font-weight: bold; */
   font-weight: 500;
   margin-left: 50px;
   margin-bottom: 0.35rem;
+  letter-spacing: 0.02em;
 }
 /* description */
 .list-description {
