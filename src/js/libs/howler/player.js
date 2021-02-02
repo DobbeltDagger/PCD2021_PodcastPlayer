@@ -9,7 +9,8 @@
  */
 
 // Cache references to DOM elements.
-var elms = ['track', 'subtitle', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'peakFile', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
+/* 'timer', */
+var elms = ['track', 'subtitle', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'peakFile', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -265,6 +266,8 @@ Player.prototype = {
 
     // Get the Howl we want to manipulate.
     var sound = self.playlist[self.index].howl;
+    console.log("sound:", sound);
+    console.log("sound.playing():", sound.playing());
 
     // Convert the percent into a seek position.
     if (sound.playing()) {
@@ -280,12 +283,14 @@ Player.prototype = {
 
     // Get the Howl we want to manipulate.
     var sound = self.playlist[self.index].howl;
+    // console.log("sound:", sound);
 
     // Determine our current seek position.
     var seek = sound.seek() || 0;
-    // timer.innerHTML = self.formatTime(Math.round(seek));
     duration.innerHTML = self.formatTime(Math.round(seek)) + " / " + self.formatTime(Math.round(sound.duration()));
     progress.style.width = (((seek / sound.duration()) * 100) || 0) + '%';
+    // console.log("progress.style.width:", progress.style.width);
+    console.log("sound.playing():", sound.playing());
 
     // If the sound is still playing, continue stepping.
     if (sound.playing()) {
@@ -339,7 +344,7 @@ var player = new Player([
   {
     title: 'Rave Digger',
     file: 'rave_digger',
-    desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
+    desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
     contributor: "Anders Visti",
     duration: "1:00",
     rss: "rssfeed",
@@ -357,7 +362,7 @@ var player = new Player([
   {
     title: 'Running Out',
     file: 'running_out',
-    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
+    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
     contributor: "Anders Visti",
     duration: "1:00",
     rss: "rssfeed",    
@@ -366,7 +371,7 @@ var player = new Player([
   {
     title: 'Rave Digger',
     file: 'rave_digger',
-    desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
+    desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
     contributor: "Anders Visti",
     duration: "1:00",
     rss: "rssfeed",
@@ -393,7 +398,7 @@ var player = new Player([
   {
     title: 'Running Out',
     file: 'running_out',
-    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
+    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
     contributor: "Anders Visti",
     duration: "1:00",
     rss: "rssfeed",    
