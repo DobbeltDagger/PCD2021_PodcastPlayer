@@ -123,7 +123,7 @@ p {
 
 
 /* ****************************************************************************** */
-/* peakFileWrapper */
+/* durationWrapper */
 
 .durationWrapper {
   position: absolute;
@@ -152,9 +152,207 @@ p {
   bottom: 0px;
   left: 460px;
   background: #444;
+  background: url(../images/audiofileTest3.png) center left repeat-x;
+  background-size: contain;  
+}
+
+#peakFile {
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 60px;
+}
+
+/* ****************************************************************************** */
+/* Playlist */
+#playlist {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(17, 10, 20, 0.5); /* rgba(255,165,0,0.5); /* rgba(0, 0, 0, 0.5); */
+  display: block; /* none; */
+}
+#list {
+  width: 100%;
+  height: calc(80% - 90px); /* 100%; */
+  position: absolute;
+  top: 20%; /* 0; */
+  left: 0;
+  padding: 1rem 0px;
+  /* border: 1px solid white; */
+  background: rgba(0,0,0,0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: flex-start; /* center */
+  -ms-flex-pack: flex-start; /* center */
+  justify-content: flex-start; /* center */
+  -webkit-box-align: flex-start; /* center; */
+  -ms-flex-align: flex-start; /* center; */
+  align-items: flex-start; /* center; */
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+.list-song {
+  /* width: 50%; /* 100%; */
+  flex: 0 0 50%; /* 0 0 50%; */
+  height: auto; /* 120px; */
+  font-size: 17px;
+  line-height: 1.35em; /* 120px; */
+  text-align: left; /* center; */
+  padding: 0.65rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.list-song:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
 }
 
 
+/* listHeader */
+.listHeader {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+.listHeader h2 {
+  margin: 0px 0px 0px 0px;
+}
+
+/* icon */
+.list-icon {
+  position: absolute;
+  top: 0.8rem; /* 0px; */
+  left: 1rem; /* 0px; */
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: lightseagreen;
+  float: left;
+  margin: 0px; /* 0.325rem 1.15rem 0.5rem 0px; */
+}
+/* title */
+.list-title {
+  font-size: 24px; /* 50px; */
+  line-height: 1.35em; /* 120px; */
+  font-weight: bold;
+  margin-left: 50px;
+  margin-bottom: 0.35rem;
+}
+/* description */
+.list-description {
+  margin-left: 50px;
+}
+.list-contributor {
+  color: lightblue;
+  margin-left: 50px;
+}
+.list-trackLength {
+  color: lightblue;
+  margin-left: 50px;
+}
+
+
+/* ****************************************************************************** */
+/* Volume */
+#volume {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  touch-action: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  display: none;
+}
+.bar {
+  position: absolute;
+  /* top: 50%; */
+  bottom: 90px;
+  left: 0px; /* 5%; */
+  margin: -5px auto;
+  height: 10px;
+  background-color: #FFF;
+  box-shadow: none;
+}
+#barEmpty {
+  width: 100%; /* 90%; */
+  opacity: 0.5;
+  box-shadow: none;
+  cursor: pointer;
+}
+#barFull {
+  width: 100%; /* 90%; */
+}
+#sliderBtn {
+  width: 36px; /* 50px; */
+  height: 36px; /* 50px; */
+  position: absolute;
+  /* top: 50%; */
+  bottom: 90px;
+  left: 100%; /* 93.25%; */
+  margin: -18px auto; /* -25px auto; */
+  background-color: #FFF; /*  #FEFEFE; */
+  box-shadow: none; /* 1px 1px 5px rgba(0, 0, 0, 0.33); */
+  border-radius: 18px; /* 25px; */
+  cursor: pointer;
+}
+
+
+/* ****************************************************************************** */
+/* Waveform */
+#waveform {
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin: -15% auto;
+  display: none;
+  cursor: pointer;
+  opacity: 0.8;
+  -webkit-user-select: none;
+  user-select: none;
+  border: 1px solid red;
+}
+#waveform:hover {
+  opacity: 1;
+}
+#bar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  margin-top: -1px;
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 0.9;
+}
+
+/* ****************************************************************************** */
+/* Progress */
+#progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 60px; /* 100%; */
+  background-color: rgba(255,255,255,0.15);
+  z-index: -1;
+}
+
+
+
+
+/* ***************************************************************************** */
 /* Fade-In */
 .fadeout {
   -webkit-animation: fadeout 0.5s;

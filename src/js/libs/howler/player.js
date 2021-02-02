@@ -9,7 +9,7 @@
  */
 
 // Cache references to DOM elements.
-var elms = ['track', 'subtitle', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
+var elms = ['track', 'subtitle', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'peakFile', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -407,7 +407,15 @@ playBtn.addEventListener('click', function() { player.play(); });
 pauseBtn.addEventListener('click', function() { player.pause(); });
 prevBtn.addEventListener('click', function() { player.skip('prev'); });
 nextBtn.addEventListener('click', function() { player.skip('next'); });
-waveform.addEventListener('click', function(event) { player.seek(event.clientX / window.innerWidth); });
+// waveform.addEventListener('click', function(event) { player.seek(event.clientX / window.innerWidth); });
+peakFile.addEventListener('click', function(event) {
+  // console.log("peakFile was clicked!", event);
+  // console.log("peakFile.getBoundingClientRect().width", peakFile.getBoundingClientRect().width);
+  const width = peakFile.getBoundingClientRect().width;
+  const xpos = peakFile.getBoundingClientRect().left;
+  // console.log("seek division:", (event.clientX - xpos) / width);
+  player.seek((event.clientX - xpos) / width);
+});
 playlistBtn.addEventListener('click', function() { player.togglePlaylist(); });
 playlist.addEventListener('click', function() { player.togglePlaylist(); });
 volumeBtn.addEventListener('click', function() { player.toggleVolume(); });
