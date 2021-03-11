@@ -112,19 +112,36 @@ Player.prototype = {
         onplay: function() {
           // Display the duration.
           duration.innerHTML = self.formatTime(Math.round(sound.duration()));
+
           // Start upating the progress of the track.
           requestAnimationFrame(self.step.bind(self));
+
+          // Start the wave animation if we have already loaded
+          wave.container.style.display = 'block';
+          // bar.style.display = 'none';
           pauseBtn.style.display = 'block';
         },
         onload: function() {
+          // Start the wave animation.
+          wave.container.style.display = 'block';
+          // bar.style.display = 'none';
           loading.style.display = 'none';
         },
         onend: function() {
+          // Stop the wave animation.
+          wave.container.style.display = 'none';
+          // bar.style.display = 'block';
           self.skip('next');
         },
         onpause: function() {
+          // Stop the wave animation.
+          wave.container.style.display = 'none';
+          // bar.style.display = 'block';
         },
         onstop: function() {
+          // Stop the wave animation.
+          wave.container.style.display = 'none';
+          // bar.style.display = 'block';
         },
         onseek: function() {
           // Start upating the progress of the track.
@@ -439,7 +456,6 @@ volume.addEventListener('touchmove', move);
 
 ////////////////////////////////////////////////////////////
 // Setup the "waveform" animation.
-/*
 var wave = new SiriWave({
   container: waveform,
   width: window.innerWidth,
@@ -450,7 +466,6 @@ var wave = new SiriWave({
   frequency: 2
 });
 wave.start();
-*/
 
 
 ////////////////////////////////////////////////////////////
@@ -460,8 +475,6 @@ var resize = function() {
   console.log("player resize was run!");
   var height = window.innerHeight * 0.3;
   var width = window.innerWidth;
-
-  /*
   wave.height = height;
   wave.height_2 = height / 2;
   wave.MAX = wave.height_2 - 4;
@@ -471,7 +484,6 @@ var resize = function() {
   wave.canvas.height = height;
   wave.canvas.width = width;
   wave.container.style.margin = -(height / 2) + 'px auto';
-  */
 
   // Update the position of the slider.
   var sound = player.playlist[player.index].howl;

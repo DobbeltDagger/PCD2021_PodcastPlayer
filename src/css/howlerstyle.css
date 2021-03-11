@@ -279,8 +279,8 @@ p {
   bottom: 0px;
   left: 460px;
   /* background: rgba(255,255,255,0.96) url(../images/audiofileTest5.png) bottom left repeat-x; */
-  background: url(../images/audiofileTest5.png) bottom left repeat-x;
-  background-size: contain;  
+  background: url(../images/audiofileTest7.png) bottom left repeat-x;
+  background-size: cover; /* contain;   */
 }
 
 #peakFile {
@@ -402,15 +402,20 @@ p {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   display: none;
 }
+/*
 .bar {
   position: absolute;
-  /* top: 50%; */
   bottom: 90px;
-  left: 0px; /* 5%; */
+  left: 0px;
   margin: -5px auto;
   height: 10px;
   background-color: #FFF;
   box-shadow: none;
+  display: none;
+}
+*/
+#bar {
+  display: none;
 }
 #barEmpty {
   width: 100%; /* 90%; */
