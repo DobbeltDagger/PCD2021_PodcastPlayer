@@ -43,22 +43,32 @@
     },
 
 
+    /*
     ///////////////////////////////////////////////////////////
     testPromise: async function() {
       await this.testingBabel()
         .then(response => console.log("Response:", response));
-      console.log("testPromise awaited testingBabel function");
+      console.log("testPromise awaited testingBabel function")
     },
 
     
     ///////////////////////////////////////////////////////////
     testingBabel: function() {
+      // this works
+      const test = () => {
+        console.log("Arrow function is tested!");
+      }
+      let x = 0;
       return new Promise((resolve, reject) => {
-        {
+        if (x > 0) {
+          reject("x is not right");
+        }
+        else {
           resolve("this is a good x");
         }
       })
     },
+    */
 
   };
 

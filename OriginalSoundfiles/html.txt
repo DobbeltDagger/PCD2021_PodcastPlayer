@@ -1,0 +1,4 @@
+// OriginalSoundfiles
+{ folder: "OriginalSoundfiles", name: "Anders", desc: "HerErBeskrivelse", fullSample: "Heidi_SanktNicolausGade6.webm" },
+{ folder: "OriginalSoundfiles", name: "Anders", desc: "HerErBeskrivelse", fullSample: "podAnn.webm" },
+{ folder: "OriginalSoundfiles", name: "Anders", desc: "HerErBeskrivelse", fullSample: "STE-003.webm" },

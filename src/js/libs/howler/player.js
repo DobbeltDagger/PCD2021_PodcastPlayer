@@ -114,17 +114,33 @@ Player.prototype = {
           duration.innerHTML = self.formatTime(Math.round(sound.duration()));
           // Start upating the progress of the track.
           requestAnimationFrame(self.step.bind(self));
+
+          // Start the wave animation if we have already loaded
+          // wave.container.style.display = 'block';
+          // bar.style.display = 'none';
           pauseBtn.style.display = 'block';
         },
         onload: function() {
+          // Start the wave animation.
+          // wave.container.style.display = 'block';
+          // bar.style.display = 'none';
           loading.style.display = 'none';
         },
         onend: function() {
+          // Stop the wave animation.
+          // wave.container.style.display = 'none';
+          // bar.style.display = 'block';
           self.skip('next');
         },
         onpause: function() {
+          // Stop the wave animation.
+          // wave.container.style.display = 'none';
+          // bar.style.display = 'block';
         },
         onstop: function() {
+          // Stop the wave animation.
+          // wave.container.style.display = 'none';
+          // bar.style.display = 'block';
         },
         onseek: function() {
           // Start upating the progress of the track.
@@ -325,50 +341,51 @@ Player.prototype = {
 // Setup our new audio player class and pass it the playlist.
 var player = new Player([
   {
-    title: 'Rave Digger',
-    file: 'rave_digger',
-    desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
-    contributor: "Anders Visti",
-    duration: "1:00",
+    title: 'Heidi Nikolaisen',
+    file: 'Heidi_SanktNicolausGade6',
+    desc: "Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
+    contributor: "Heidi Nikolaisen",
+    duration: "2:06",
     rss: "rssfeed",
     howl: null
   },
   {
-    title: '80s Vibe',
-    file: '80s_vibe',
-    desc: "Here's a long description of the 80s vibe song",
-    contributor: "Anders Visti",
-    duration: "1:00",
+    title: 'Joy Wang',
+    file: 'JOYWANG_New Recording5',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    contributor: "Joy Wang",
+    duration: "1:02",
     rss: "rssfeed",
     howl: null
   },
   {
-    title: 'Running Out',
-    file: 'running_out',
-    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
-    contributor: "Anders Visti",
-    duration: "1:00",
+    title: 'Nynne Lucca',
+    file: 'nynne_why_code',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    contributor: "Nynne Lucca",
+    duration: "1:04",
     rss: "rssfeed",    
     howl: null
   },
   {
-    title: 'Rave Digger',
-    file: 'rave_digger',
-    desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
-    contributor: "Anders Visti",
+    title: 'Ann Karring',
+    file: 'podAnn',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    contributor: "Ann Karring",
     duration: "1:00",
     rss: "rssfeed",
     howl: null
   },
   {
-    title: '80s Vibe',
-    file: '80s_vibe',
-    desc: "Here's a long description of the 80s vibe song",
-    contributor: "Anders Visti",
-    duration: "1:00",
+    title: 'Winnie Soon',
+    file: 'STE-003',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    contributor: "Winnie Soon",
+    duration: "1:16",
     rss: "rssfeed",    
     howl: null
   },
+  /*
   {
     title: 'Running Out',
     file: 'running_out',
@@ -387,6 +404,7 @@ var player = new Player([
     rss: "rssfeed",    
     howl: null
   } 
+  */
 ]);
 
 //////////////////////////////////////////////////////////////////////////////////////

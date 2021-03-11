@@ -40,6 +40,7 @@ App.prototype = {
   },
 
 
+  /*
   ///////////////////////////////////////////////////////////
   testPromise: async function() {
     await this.testingBabel()
@@ -64,5 +65,6 @@ App.prototype = {
       }
     })
   },
+  */
 
 }

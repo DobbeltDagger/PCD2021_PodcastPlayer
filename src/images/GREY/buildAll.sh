@@ -2,6 +2,9 @@
 LARGE_FOLDER=./large
 THUMBS_FOLDER=./thumbs
 # for file in ./large/*
+
+
+
 for file in ./*.png
 do
 
@@ -25,6 +28,7 @@ do
     # convert "$file" -resize 1280x854 -quality 70 "${LARGE_FOLDER}/${filename}.${base64Extension}"
 
     code="$(base64 -w 0 $file)"
+    echo -n "" > "${filename}.${base64Extension}" # clear the txt file
     echo "data:image/jpeg;base64,$code" >> "${filename}.${base64Extension}"
     
   fi     
