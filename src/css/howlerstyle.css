@@ -473,9 +473,10 @@ p {
   left: 0;
   width: 0%;
   height: 60px; /* 100%; */
-  background-color: rgba(255,255,255,0.15);
-  /* background-color: rgba(0,0,0,0.15); */
-  z-index: -1; /* 0px; /*  -1; */
+  background-color: rgba(255,255,255,0.25);
+  border-right: 1px solid tomato;
+  z-index: 0; /* -1; /* 0px; /*  -1; */
+  pointer-events: none;
 }
 
 
