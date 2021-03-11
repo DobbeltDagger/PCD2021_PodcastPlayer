@@ -385,16 +385,16 @@ var player = new Player([
     rss: "rssfeed",    
     howl: null
   },
-  /*
   {
-    title: 'Running Out',
-    file: 'running_out',
-    desc: "Here's a long description of the Running Out song",
-    contributor: "Anders Visti",
-    duration: "1:00",
+    title: 'Wendy Chun',
+    file: 'WendyChun',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    contributor: "Wendy Chun",
+    duration: "34:14",
     rss: "rssfeed",    
     howl: null
   },
+  /*
   {
     title: 'Running Out',
     file: 'running_out',
