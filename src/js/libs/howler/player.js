@@ -341,55 +341,55 @@ Player.prototype = {
 // Setup our new audio player class and pass it the playlist.
 var player = new Player([
   {
-    title: 'Heidi Nikolaisen',
+    title: 'Why code?',
+    contributor: "Heidi Nikolaisen",
     file: 'Heidi_SanktNicolausGade6',
     desc: "Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
-    contributor: "Heidi Nikolaisen",
     duration: "2:06",
     rss: "rssfeed",
     howl: null
   },
   {
-    title: 'Joy Wang',
+    title: 'Why code?',
+    contributor: "Joy Wang",
     file: 'JOYWANG_New Recording5',
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
-    contributor: "Joy Wang",
     duration: "1:02",
     rss: "rssfeed",
     howl: null
   },
   {
-    title: 'Nynne Lucca',
+    title: 'Why code?',
+    contributor: "Nynne Lucca",
     file: 'nynne_why_code',
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
-    contributor: "Nynne Lucca",
     duration: "1:04",
     rss: "rssfeed",    
     howl: null
   },
   {
-    title: 'Ann Karring',
+    title: 'Why code?',
+    contributor: "Ann Karring",
     file: 'podAnn',
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
-    contributor: "Ann Karring",
     duration: "1:00",
     rss: "rssfeed",
     howl: null
   },
   {
-    title: 'Winnie Soon',
+    title: 'Why code?',
+    contributor: "Winnie Soon",
     file: 'STE-003',
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
-    contributor: "Winnie Soon",
     duration: "1:16",
     rss: "rssfeed",    
     howl: null
   },
   {
-    title: 'Wendy Chun',
+    title: 'Wendy Chun - Crisis + Habit = Update',
+    contributor: "Wendy Chun",
     file: 'WendyChun',
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
-    contributor: "Wendy Chun",
     duration: "34:14",
     rss: "rssfeed",    
     howl: null

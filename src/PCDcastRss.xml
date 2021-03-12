@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<channel>
+<title>PCDcast, RSS feed</title>
+<link>https://pcdaarhus.net/</link>
+<description>PCDcast for PCD @Aarhus 2021. Processing Community Day (PCD) is a worldwide event initiated by The Processing Foundation, involving more than 30 international cities to organize a day event with their local communities to celebrating and exploring art, code, and diversity.</description>
+<item>
+  <title>Why code? Heidi Nikolaisen</title>
+  <link>http://PCDcastTest.andersvisti.dk/audio/Heidi_SanktNicolausGade6.mp3</link>
+  <guid>http://PCDcastTest.andersvisti.dk/audio/Heidi_SanktNicolausGade6.mp3</guid>
+  <pubDate>Fri, 12 Mar 2021 13:20:00 GMT</pubDate>
+  <description>Why code? by Heidi Nikolaisen.</description>
+</item>
+
+<item>
+  <title>Why code? Joy Wang</title>
+  <link>http://PCDcastTest.andersvisti.dk/audio/JOYWANG_New Recording5.mp3</link>
+  <guid>http://PCDcastTest.andersvisti.dk/audio/JOYWANG_New Recording5.mp3</guid>
+  <pubDate>Fri, 12 Mar 2021 13:20:00 GMT</pubDate>
+  <description>Why code? by Joy Wang.</description>
+</item>
+
+<item>
+  <title>Why code? Nynne Lucca</title>
+  <link>http://PCDcastTest.andersvisti.dk/audio/nynne_why_code.mp3</link>
+  <guid>http://PCDcastTest.andersvisti.dk/audio/nynne_why_code.mp3</guid>
+  <pubDate>Fri, 12 Mar 2021 13:20:00 GMT</pubDate>
+  <description>Why code? by Nynne Lucca.</description>
+</item>
+
+<item>
+  <title>Why code? Ann Karring</title>
+  <link>http://PCDcastTest.andersvisti.dk/audio/podAnn.mp3</link>
+  <guid>http://PCDcastTest.andersvisti.dk/audio/podAnn.mp3</guid>
+  <pubDate>Fri, 12 Mar 2021 13:20:00 GMT</pubDate>
+  <description>Why code? by Ann Karring.</description>
+</item>
+
+<item>
+  <title>Why code? Winnie Soon</title>
+  <link>http://PCDcastTest.andersvisti.dk/audio/STE-003.mp3</link>
+  <guid>http://PCDcastTest.andersvisti.dk/audio/STE-003.mp3</guid>
+  <pubDate>Fri, 12 Mar 2021 13:20:00 GMT</pubDate>
+  <description>Why code? by Winnie Soon.</description>
+</item>
+
+<item>
+  <title>Wendy Chun - Crisis + Habit = Update</title>
+  <link>http://PCDcastTest.andersvisti.dk/audio/WendyChun.mp3</link>
+  <guid>http://PCDcastTest.andersvisti.dk/audio/WendyChun.mp3</guid>
+  <pubDate>Fri, 12 Mar 2021 13:20:00 GMT</pubDate>
+  <description>Wendy Chun - Crisis + Habit = Update</description>
+</item>
+
+</channel>
+</rss>
