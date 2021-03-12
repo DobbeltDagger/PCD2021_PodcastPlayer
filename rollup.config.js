@@ -16,26 +16,6 @@ const production = !process.env.ROLLUP_WATCH;
 
 export default [
   //////////////////////////////////////////////////////
-  // css compression style.css
-  {
-    input: 'src/css/style.css',
-    output: {
-      file: 'dist/css/style-compressed.css',
-      // dir: 'dist/css/',
-    },
-    plugins: [
-      // https://www.npmjs.com/package/rollup-plugin-postcss
-      postcss({
-        plugins: [autoprefixer],
-        minimize: true,
-        extensions: ['.css'], // ['.sass','.css'],
-        sourceMap: true,
-        // extract: true, // if false, file becomes injection into head
-        extract: path.resolve('./dist/css/style-compressed.css') // extract is true when path is set!
-      })  
-    ]
-  },
-  //////////////////////////////////////////////////////
   // css compression howlerstyle.css
   {
     input: 'src/css/howlerstyle.css',
@@ -54,6 +34,28 @@ export default [
       })  
     ]
   },
+  //////////////////////////////////////////////////////
+  // css compression style.css
+  /*
+  {
+    input: 'src/css/style.css',
+    output: {
+      file: 'dist/css/style-compressed.css',
+      // dir: 'dist/css/',
+    },
+    plugins: [
+      // https://www.npmjs.com/package/rollup-plugin-postcss
+      postcss({
+        plugins: [autoprefixer],
+        minimize: true,
+        extensions: ['.css'], // ['.sass','.css'],
+        sourceMap: true,
+        // extract: true, // if false, file becomes injection into head
+        extract: path.resolve('./dist/css/style-compressed.css') // extract is true when path is set!
+      })  
+    ]
+  },
+  */  
   ////////////////////////////////////////////////////// 
   // JS compression
   {
@@ -71,16 +73,19 @@ export default [
       //   exclude: 'node_modules/**'
       // }),      
       production && terser(), // minify, but only in production
-      // copy({
-      //   targets: [
-      //     { src: 'src/audio/**/*', dest: 'dist/audio' },
-      //     { src: 'src/fonts/*', dest: 'dist/fonts' },
-      //     // { src: 'src/css/*', dest: 'dist/css' },
-      //     { src: 'src/js/libs/howler/**/*', dest: 'dist/js/libs/howler' },
-      //     { src: 'src/js/libs/p5.min.js', dest: 'dist/js/libs' },
-      //     { src: 'src/images/**/*', dest: 'dist/images' }
-      //   ]
-      // }),
+      copy({
+        targets: [
+          { src: 'src/audio/**/*', dest: 'dist/audio' },
+          { src: 'src/fonts/*', dest: 'dist/fonts' },
+          // { src: 'src/css/*', dest: 'dist/css' },
+          { src: 'src/js/libs/howler/**/*', dest: 'dist/js/libs/howler' },
+          { src: 'src/js/libs/p5.min.js', dest: 'dist/js/libs' },
+          { src: 'src/js/App.js', dest: 'dist/js' },
+          { src: 'src/js/functions.js', dest: 'dist/js' },
+          { src: 'src/js/sketch.js', dest: 'dist/js' },
+          { src: 'src/images/**/*', dest: 'dist/images' }
+        ]
+      }),
     ]
   }
 ];

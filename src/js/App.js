@@ -11,23 +11,13 @@ export function App() {
 ///////////////////////////////////////////////////////////
 App.prototype = {
 
-
   ///////////////////////////////////////////////////////////
   init: function() {
-    console.log("App init was run")
-    
+    console.log("App init was run");
     console.log("p5:", p5);
-    console.log("player:", player);
-    console.log("Particle:", Particle);
-    
+    console.log("player:", player);    
     // testing babel
-    this.testPromise();
-
-    // start sketch in bg
-
-
-    // start Drawing()
-    // this.draw();
+    // this.testPromise();
   },
 
 
@@ -35,7 +25,6 @@ App.prototype = {
   draw: function() {
     // this just draws in a loop
     // requestAnimationFrame(draw);
-
     console.log("Drawing")
   },
 

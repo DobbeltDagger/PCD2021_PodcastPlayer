@@ -1,5 +1,13 @@
 @charset "utf-8";
 
+
+:root {
+  --white-bg-color: #FCFCFC;
+  --dark-bg-color: #110A14; /* rgb(17, 10, 20) */
+  --main-text-color: var(--main-text-color);
+}
+
+
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* BASIC CONSCIOUS RESETs +++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -78,7 +86,7 @@ body {
   letter-spacing: 0.01em;
   user-select: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--main-text-color); /* rgba(255, 255, 255, 0.82); */
 }
 
 
@@ -162,9 +170,8 @@ p {
   bottom: 60px;
   left: 0px;
   width: 100vw;
-  /* background-color: rgba(0, 0, 0, 0.5); /* black; */
-  background-color: rgba(255,255,255, 0.96);
-  color: #222;
+  background-color: var(--white-bg-color);
+  color: var(--main-text-color);
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -174,20 +181,20 @@ p {
 
 #track {
   flex: 0 0 460px; /* 20%; */
-  /* color: tomato; */
   padding: 1rem;
-  font-weight: bold;
 }
 #subtitle {
-  flex: 0 0 50%;
+  flex: 1; /* 0 0 50%; */
   max-width: 800px;
   padding: 1rem 2rem 1rem 0px;
 }
+/*
 #metadata {
   flex: 0 0 30%;
   max-width: 800px;
   padding: 1rem;
 }
+*/
 
 
 
@@ -200,8 +207,8 @@ p {
   bottom: 0px; /* 1.75rem; /* 3%; */
   left: 0px;
   /* background: rgba(0,0,0,0.5); */
-  background-color: rgba(255,255,255, 0.96);
-  color: #222;
+  background-color: var(--white-bg-color);
+  color: var(--main-text-color);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -270,8 +277,8 @@ p {
   bottom: 0px;
   left: 300px;
   /* background: rgba(0,0,0,0.4); /* rgba(17, 10, 20, 0.65); */
-  background: rgba(255,255,255, 0.96);
-  color: #222;
+  background-color: var(--white-bg-color);
+  color: var(--main-text-color);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -311,8 +318,18 @@ p {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.25); /* rgba(17, 10, 20, 0.5); /* rgba(255,165,0,0.5); /* rgba(0, 0, 0, 0.5); */
+  background-color: transparent; /* rgba(0,0,0,0.25); */
   display: block; /* none; */
+}
+/* listShade is to gray out controls while picking from playlist */
+#listShade {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: calc(100vw - 60px);
+  height: 60px;
+  background-color: var(--dark-bg-color); /* rgba(0,0,0,0.25); */
+  opacity: 0.35;
 }
 #list {
   width: 100%;
@@ -322,8 +339,8 @@ p {
   left: 0;
   padding: 1rem 0px;
   /* border: 1px solid white; */
-  background: rgba(255,255,255, 0.96); /* rgba(0,0,0,0.5); */
-  color: #222;
+  background: var(--white-bg-color); /* rgba(0,0,0,0.5); */
+  color: var(--main-text-color);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -373,7 +390,7 @@ p {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: lightseagreen;
+  background-color: #6d5a7f; /* tomato; /* lightseagreen; */
   float: left;
   margin: 0px; /* 0.325rem 1.15rem 0.5rem 0px; */
 }
@@ -382,7 +399,7 @@ p {
   /* font-family: 'Oswald', sans-serif; */
   font-size: 21px; /* 24px; /* 50px; */
   line-height: 1.35em; /* 120px; */
-  font-weight: 700; /* 500; */
+  /* font-weight: 700; /* 500; */
   margin-left: 50px;
   margin-bottom: 0.35rem;
   letter-spacing: 0px; /* 0.02em; */

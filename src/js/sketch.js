@@ -1,5 +1,3 @@
-// import { Particle } from './Particle.js';
-
 const particles = [];
 const numberOfParticles = 400;
 const noiseScale = 1.2e11;

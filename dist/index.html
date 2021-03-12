@@ -5,41 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PCD2021, podcast player</title>
   <link rel="shortcut icon" href="./favicon.png" type="image/png">
-  <link rel="stylesheet" href="./css/style-compressed.css">
+  <link rel="stylesheet" href="./css/greyButtons.css">
+  <!-- <link rel="stylesheet" href="./css/style-compressed.css"> -->
   <link rel="stylesheet" href="./css/howlerstyle-compressed.css">
 </head>
 <body>
+  <!-- animated backdrop -->
+  <div id='backdrop'></div>
+
   <div class="pageWrapper">
 
-    <!-- howler stuff -->
-    <!-- Top Info -->
-    <div id="title">
-      <span id="track"></span>
-      <div id="timer">0:00</div>
-      <div id="duration">0:00</div>
+    <!-- logo -->
+    <div id="logo">
+      <a href="/" class="round"></a>
+      <!-- <a href="/" class="text">PCD2021</a> -->
+    </div>
+
+    <!-- rss -->
+    <div class='rssWrapper'>
+      <a href='PCDcastRss.xml' target='_blank'>rss</a>
+    </div>
+
+
+    <!-- title wrapper -->
+    <div id='titleWrapper'>
+      <!-- <div id="title"></div> -->
+      <div id="track"></div>
+      <div id='subtitle'></div>
+      <!-- <div id='metadata'>
+        <div id='metaName'>Her er et navn</div>
+        <div id='metaDuration'>Duration: 1:00</div>
+        <div id='metaRss'>rssfeed</div>
+      </div> -->
     </div>
 
     <!-- Controls -->
-    <div class="controlsOuter">
-      <div class="controlsInner">
-        <div id="loading"></div>
-        <div class="btn" id="playBtn"></div>
-        <div class="btn" id="pauseBtn"></div>
-        <div class="btn" id="prevBtn"></div>
-        <div class="btn" id="nextBtn"></div>
-      </div>
-      <div class="btn" id="playlistBtn"></div>
-      <div class="btn" id="volumeBtn"></div>
+    <div class="controlsWrapper">
+      <div class="btn" id="playlistBtn">playlist</div>
+      <div id="loading"></div>
+      <div class="btn" id="playBtn">play</div>
+      <div class="btn" id="pauseBtn">pause</div>
+      <div class="btn" id="prevBtn">prev</div>
+      <div class="btn" id="nextBtn">next</div>
+      <div class="btn" id="volumeBtn">volume</div>
+    </div>
+
+    <!-- duration wrapper -->
+    <div class="durationWrapper">
+      <div id="duration">0:00 / 0:00</div>
+      <div id="timer">&nbsp;</div>
+    </div>
+
+    <!-- Audio in bottom of screen -->
+    <div class='peakFileWrapper'>
+      <div id="peakFile"></div>
+      <div id="progress"></div>
     </div>
 
     <!-- Progress -->
-    <div id="waveform"></div>
-    <div id="bar"></div>
-    <div id="progress"></div>
+    <!-- <div id="waveform"></div> -->
+    <!-- <div id="bar"></div> -->
 
     <!-- Playlist -->
-    <div id="playlist">
-      <div id="list"></div>
+    <div id="playlist" style='display: block;'> <!-- keep this inline style! -->
+      <div id="list">
+        <div class='listHeader'><h2>PCD 2021 playlist</h2></div>
+      </div>
+      <!-- shade -->
+      <div id='listShade'></div>
     </div>
 
     <!-- Volume -->

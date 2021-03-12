@@ -1,15 +1,3 @@
-/*!
- *  Howler.js Audio Player Demo
- *  howlerjs.com
- *
- *  (c) 2013-2020, James Simpson of GoldFire Studios
- *  goldfirestudios.com
- *
- *  MIT License
- */
-
-// Cache references to DOM elements.
-/* 'timer', */
 var elms = ['track', 'subtitle', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'peakFile', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
@@ -48,32 +36,32 @@ var Player = function(playlist) {
     // title
     var title = document.createElement('div');
     title.className = 'list-title';
-    title.innerHTML = trackNr + ". " + song.title; /* + " (" + song.duration + ')'; */
+    title.innerHTML = "<strong>" + trackNr + ". " + song.title + "</strong> by " + song.contributor;
     // description
     var desc = document.createElement('div');
     desc.className = 'list-description';
     desc.innerHTML = song.desc;
     // contributor
-    var contributor = document.createElement('div');
-    contributor.className = 'list-contributor';
-    contributor.innerHTML = song.contributor;
+    // var contributor = document.createElement('div');
+    // contributor.className = 'list-contributor';
+    // contributor.innerHTML = song.contributor;
     // duration
     var duration = document.createElement('div');
     duration.className = 'list-contributor';
-    duration.innerHTML = song.duration;
+    duration.innerHTML = "Duration: " + song.duration + " mins";
     // Rss
-    var rssElm = document.createElement('div');
-    rssElm.className = 'list-contributor';
-    rssElm.innerHTML = song.rss;
+    // var rssElm = document.createElement('div');
+    // rssElm.className = 'list-contributor';
+    // rssElm.innerHTML = song.rss;
 
 
     // nest some info
     listSong.appendChild(icon);
     listSong.appendChild(title);
     listSong.appendChild(desc);
-    listSong.appendChild(contributor);
+    // listSong.appendChild(contributor);
     listSong.appendChild(duration);
-    listSong.appendChild(rssElm);
+    // listSong.appendChild(rssElm);
     listSong.id = 'song' + trackNr;
 
     list.appendChild(listSong); // adds to playlist -> list elm
@@ -153,7 +141,7 @@ Player.prototype = {
     sound.play();
 
     // Update the track display.
-    track.innerHTML = (index + 1) + '. ' + data.title;
+    track.innerHTML = '<strong>' + (index + 1) + '. ' + data.title + "</strong><br/>by " + data.contributor;
     subtitle.innerHTML = data.desc;
 
     // Show the pause button.

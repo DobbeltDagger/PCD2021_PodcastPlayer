@@ -1,15 +1,4 @@
-/*!
- *  Howler.js Audio Player Demo
- *  howlerjs.com
- *
- *  (c) 2013-2020, James Simpson of GoldFire Studios
- *  goldfirestudios.com
- *
- *  MIT License
- */
-
-// Cache references to DOM elements.
-var elms = ['track', 'subtitle', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
+var elms = ['track', 'subtitle', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'peakFile', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -24,8 +13,8 @@ var Player = function(playlist) {
   this.index = 0;
 
   // Display the title of the first track.
-  track.innerHTML = '-'; // '1. ' + playlist[0].title;
-  subtitle.innerHTML = '-'; // "Hey der!";
+  track.innerHTML = '';
+  subtitle.innerHTML = '';
 
   // Setup the playlist display.
   let trackNr = 0;
@@ -47,32 +36,32 @@ var Player = function(playlist) {
     // title
     var title = document.createElement('div');
     title.className = 'list-title';
-    title.innerHTML = trackNr + ". " + song.title + " (" + song.duration + ')';
+    title.innerHTML = "<strong>" + trackNr + ". " + song.title + "</strong> by " + song.contributor;
     // description
     var desc = document.createElement('div');
     desc.className = 'list-description';
     desc.innerHTML = song.desc;
     // contributor
-    var contributor = document.createElement('div');
-    contributor.className = 'list-contributor';
-    contributor.innerHTML = song.contributor;
+    // var contributor = document.createElement('div');
+    // contributor.className = 'list-contributor';
+    // contributor.innerHTML = song.contributor;
     // duration
     var duration = document.createElement('div');
     duration.className = 'list-contributor';
-    duration.innerHTML = song.duration;
+    duration.innerHTML = "Duration: " + song.duration + " mins";
     // Rss
-    var rssElm = document.createElement('div');
-    rssElm.className = 'list-contributor';
-    rssElm.innerHTML = song.rss;
+    // var rssElm = document.createElement('div');
+    // rssElm.className = 'list-contributor';
+    // rssElm.innerHTML = song.rss;
 
 
     // nest some info
     listSong.appendChild(icon);
     listSong.appendChild(title);
     listSong.appendChild(desc);
-    listSong.appendChild(contributor);
+    // listSong.appendChild(contributor);
     listSong.appendChild(duration);
-    listSong.appendChild(rssElm);
+    // listSong.appendChild(rssElm);
     listSong.id = 'song' + trackNr;
 
     list.appendChild(listSong); // adds to playlist -> list elm
@@ -111,36 +100,35 @@ Player.prototype = {
         onplay: function() {
           // Display the duration.
           duration.innerHTML = self.formatTime(Math.round(sound.duration()));
-
           // Start upating the progress of the track.
           requestAnimationFrame(self.step.bind(self));
 
           // Start the wave animation if we have already loaded
-          wave.container.style.display = 'block';
-          bar.style.display = 'none';
+          // wave.container.style.display = 'block';
+          // bar.style.display = 'none';
           pauseBtn.style.display = 'block';
         },
         onload: function() {
           // Start the wave animation.
-          wave.container.style.display = 'block';
-          bar.style.display = 'none';
+          // wave.container.style.display = 'block';
+          // bar.style.display = 'none';
           loading.style.display = 'none';
         },
         onend: function() {
           // Stop the wave animation.
-          wave.container.style.display = 'none';
-          bar.style.display = 'block';
+          // wave.container.style.display = 'none';
+          // bar.style.display = 'block';
           self.skip('next');
         },
         onpause: function() {
           // Stop the wave animation.
-          wave.container.style.display = 'none';
-          bar.style.display = 'block';
+          // wave.container.style.display = 'none';
+          // bar.style.display = 'block';
         },
         onstop: function() {
           // Stop the wave animation.
-          wave.container.style.display = 'none';
-          bar.style.display = 'block';
+          // wave.container.style.display = 'none';
+          // bar.style.display = 'block';
         },
         onseek: function() {
           // Start upating the progress of the track.
@@ -153,7 +141,7 @@ Player.prototype = {
     sound.play();
 
     // Update the track display.
-    track.innerHTML = (index + 1) + '. ' + data.title;
+    track.innerHTML = '<strong>' + (index + 1) + '. ' + data.title + "</strong><br/>by " + data.contributor;
     subtitle.innerHTML = data.desc;
 
     // Show the pause button.
@@ -265,6 +253,8 @@ Player.prototype = {
 
     // Get the Howl we want to manipulate.
     var sound = self.playlist[self.index].howl;
+    console.log("sound:", sound);
+    console.log("sound.playing():", sound.playing());
 
     // Convert the percent into a seek position.
     if (sound.playing()) {
@@ -280,12 +270,14 @@ Player.prototype = {
 
     // Get the Howl we want to manipulate.
     var sound = self.playlist[self.index].howl;
+    // console.log("sound:", sound);
 
     // Determine our current seek position.
     var seek = sound.seek() || 0;
-    // timer.innerHTML = self.formatTime(Math.round(seek));
     duration.innerHTML = self.formatTime(Math.round(seek)) + " / " + self.formatTime(Math.round(sound.duration()));
     progress.style.width = (((seek / sound.duration()) * 100) || 0) + '%';
+    // console.log("progress.style.width:", progress.style.width);
+    console.log("sound.playing():", sound.playing());
 
     // If the sound is still playing, continue stepping.
     if (sound.playing()) {
@@ -337,68 +329,70 @@ Player.prototype = {
 // Setup our new audio player class and pass it the playlist.
 var player = new Player([
   {
-    title: 'Rave Digger',
-    file: 'rave_digger',
-    desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
-    contributor: "Anders Visti",
+    title: 'Why code?',
+    contributor: "Heidi Nikolaisen",
+    file: 'Heidi_SanktNicolausGade6',
+    desc: "Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
+    duration: "2:06",
+    rss: "rssfeed",
+    howl: null
+  },
+  {
+    title: 'Why code?',
+    contributor: "Joy Wang",
+    file: 'JOYWANG_New Recording5',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    duration: "1:02",
+    rss: "rssfeed",
+    howl: null
+  },
+  {
+    title: 'Why code?',
+    contributor: "Nynne Lucca",
+    file: 'nynne_why_code',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    duration: "1:04",
+    rss: "rssfeed",    
+    howl: null
+  },
+  {
+    title: 'Why code?',
+    contributor: "Ann Karring",
+    file: 'podAnn',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
     duration: "1:00",
     rss: "rssfeed",
     howl: null
   },
   {
-    title: '80s Vibe',
-    file: '80s_vibe',
-    desc: "Here's a long description of the 80s vibe song",
-    contributor: "Anders Visti",
-    duration: "1:00",
-    rss: "rssfeed",
-    howl: null
-  },
-  {
-    title: 'Running Out',
-    file: 'running_out',
-    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
-    contributor: "Anders Visti",
-    duration: "1:00",
+    title: 'Why code?',
+    contributor: "Winnie Soon",
+    file: 'STE-003',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    duration: "1:16",
     rss: "rssfeed",    
     howl: null
   },
   {
-    title: 'Rave Digger',
-    file: 'rave_digger',
-    desc: "Here's a long description of the Rave Digger song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
-    contributor: "Anders Visti",
-    duration: "1:00",
-    rss: "rssfeed",
-    howl: null
-  },
-  {
-    title: '80s Vibe',
-    file: '80s_vibe',
-    desc: "Here's a long description of the 80s vibe song",
-    contributor: "Anders Visti",
-    duration: "1:00",
+    title: 'Wendy Chun - Crisis + Habit = Update',
+    contributor: "Wendy Chun",
+    file: 'WendyChun',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    duration: "34:14",
     rss: "rssfeed",    
     howl: null
   },
+  /*
   {
     title: 'Running Out',
     file: 'running_out',
-    desc: "Here's a long description of the Running Out song",
-    contributor: "Anders Visti",
-    duration: "1:00",
-    rss: "rssfeed",    
-    howl: null
-  },
-  {
-    title: 'Running Out',
-    file: 'running_out',
-    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl. Sed non lacus in nunc suscipit elementum. Etiam mollis facilisis lorem, vitae suscipit lectus tempor at. Quisque congue sodales malesuada.",
+    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
     contributor: "Anders Visti",
     duration: "1:00",
     rss: "rssfeed",    
     howl: null
   } 
+  */
 ]);
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -407,7 +401,15 @@ playBtn.addEventListener('click', function() { player.play(); });
 pauseBtn.addEventListener('click', function() { player.pause(); });
 prevBtn.addEventListener('click', function() { player.skip('prev'); });
 nextBtn.addEventListener('click', function() { player.skip('next'); });
-waveform.addEventListener('click', function(event) { player.seek(event.clientX / window.innerWidth); });
+// waveform.addEventListener('click', function(event) { player.seek(event.clientX / window.innerWidth); });
+peakFile.addEventListener('click', function(event) {
+  // console.log("peakFile was clicked!", event);
+  // console.log("peakFile.getBoundingClientRect().width", peakFile.getBoundingClientRect().width);
+  const width = peakFile.getBoundingClientRect().width;
+  const xpos = peakFile.getBoundingClientRect().left;
+  // console.log("seek division:", (event.clientX - xpos) / width);
+  player.seek((event.clientX - xpos) / width);
+});
 playlistBtn.addEventListener('click', function() { player.togglePlaylist(); });
 playlist.addEventListener('click', function() { player.togglePlaylist(); });
 volumeBtn.addEventListener('click', function() { player.toggleVolume(); });
@@ -443,6 +445,7 @@ volume.addEventListener('touchmove', move);
 
 ////////////////////////////////////////////////////////////
 // Setup the "waveform" animation.
+/*
 var wave = new SiriWave({
   container: waveform,
   width: window.innerWidth,
@@ -453,6 +456,7 @@ var wave = new SiriWave({
   frequency: 2
 });
 wave.start();
+*/
 
 
 ////////////////////////////////////////////////////////////
@@ -462,6 +466,8 @@ var resize = function() {
   console.log("player resize was run!");
   var height = window.innerHeight * 0.3;
   var width = window.innerWidth;
+
+  /*
   wave.height = height;
   wave.height_2 = height / 2;
   wave.MAX = wave.height_2 - 4;
@@ -471,6 +477,7 @@ var resize = function() {
   wave.canvas.height = height;
   wave.canvas.width = width;
   wave.container.style.margin = -(height / 2) + 'px auto';
+  */
 
   // Update the position of the slider.
   var sound = player.playlist[player.index].howl;
