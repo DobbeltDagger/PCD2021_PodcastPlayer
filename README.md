@@ -1,9 +1,14 @@
 ## PCD2021 Podcast test
 
-We are recording audio of a certain length, and testing servers with this tiny player.  
-HTML5 player is howler.js
+FIX:  
+_ Scrubber sometimes freezes. It seems howlers .playing function isn't always reliable. I will have to build my own.
+_ Make the whole thing responsive. Control buttons needs to go in the bottom.
 
+***
 
-Idéer:  
-_ Når jeg resizer, kan jeg måske tage et billede af mit canvas og tegne videre på det? - altså så backdrop canvas ikke starter forfra hver gang jeg resizer til at fylde skærmen! (potentielt tungt for browsere)  
-_ ...
+Installation:  
+_ git clone  
+_ npm install  
+_ npm run dev  
+
+for production: npm run build  

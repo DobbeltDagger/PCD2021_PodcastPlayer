@@ -1,7 +1,7 @@
 {
   "name": "PCD2021_PodcastingPlayer",
   "version": "1.0.0",
-  "description": "We are recording audio of a certain length, and testing servers with this tiny player.  \r HTML5 player is howler.js",
+  "description": "We are recording audio of a certain length, and testing servers with this tiny player, based on howler.js",
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",

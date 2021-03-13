@@ -80,10 +80,9 @@ export default [
           // { src: 'src/css/*', dest: 'dist/css' },
           { src: 'src/js/libs/howler/**/*', dest: 'dist/js/libs/howler' },
           { src: 'src/js/libs/p5.min.js', dest: 'dist/js/libs' },
-          { src: 'src/js/App.js', dest: 'dist/js' },
-          { src: 'src/js/functions.js', dest: 'dist/js' },
-          { src: 'src/js/sketch.js', dest: 'dist/js' },
-          { src: 'src/images/**/*', dest: 'dist/images' }
+          { src: 'src/js/*.js', dest: 'dist/js' },
+          { src: 'src/images/**/*', dest: 'dist/images' },
+          { src: 'src/PCDcastRss.xml', dest: 'dist' },
         ]
       }),
     ]
