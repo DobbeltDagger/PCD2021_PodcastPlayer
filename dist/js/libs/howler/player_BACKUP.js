@@ -1,34 +1,20 @@
-import { getPlaylistData } from './playlistData.js';
-import { initAudioCanvas, drawAudioImg } from './audioCanvas.js';
-
-var elms = [
-  'track', 'subtitle', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn',
-  'volumeBtn', 'progress', 'bar', 'wave', 'peakFile', 'loading', 'playlist', 'list', 'volume',
-  'barEmpty', 'barFull', 'sliderBtn'
-];
-elms.forEach(function(elm) { window[elm] = document.getElementById(elm); });
-
+var elms = ['track', 'subtitle', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'peakFile', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
+elms.forEach(function(elm) {
+  window[elm] = document.getElementById(elm);
+});
 
 /**
  * Player class containing the state of our playlist and where we are in it.
  * Includes all methods for playing, skipping, updating the display, etc.
  * @param {Array} playlist Array of objects with playlist song details ({title, file, howl}).
  */
-const Player = function(playlist) {
-  
-  // playlist vars
+var Player = function(playlist) {
   this.playlist = playlist;
   this.index = 0;
-
-  // audio file as image
-  this.audioCanvasCtx = initAudioCanvas(); // testing
-  drawAudioImg(this.audioCanvasCtx);
-
 
   // Display the title of the first track.
   track.innerHTML = '';
   subtitle.innerHTML = '';
-
 
   // Setup the playlist display.
   let trackNr = 0;
@@ -149,12 +135,7 @@ Player.prototype = {
           requestAnimationFrame(self.step.bind(self));
         }
       });
-
     }
-
-
-    // show the audio file!
-    drawAudioImg(this.audioCanvasCtx, sound);
 
     // Begin playing the sound.
     sound.play();
@@ -346,8 +327,73 @@ Player.prototype = {
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Setup our new audio player class and pass it the playlist.
-var player = new Player(getPlaylistData());
-
+var player = new Player([
+  {
+    title: 'Why code?',
+    contributor: "Heidi Nikolaisen",
+    file: 'Heidi_SanktNicolausGade6',
+    desc: "Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
+    duration: "2:06",
+    rss: "rssfeed",
+    howl: null
+  },
+  {
+    title: 'Why code?',
+    contributor: "Joy Wang",
+    file: 'JOYWANG_New Recording5',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    duration: "1:02",
+    rss: "rssfeed",
+    howl: null
+  },
+  {
+    title: 'Why code?',
+    contributor: "Nynne Lucca",
+    file: 'nynne_why_code',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    duration: "1:04",
+    rss: "rssfeed",    
+    howl: null
+  },
+  {
+    title: 'Why code?',
+    contributor: "Ann Karring",
+    file: 'podAnn',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    duration: "1:00",
+    rss: "rssfeed",
+    howl: null
+  },
+  {
+    title: 'Why code?',
+    contributor: "Winnie Soon",
+    file: 'STE-003',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    duration: "1:16",
+    rss: "rssfeed",    
+    howl: null
+  },
+  {
+    title: 'Wendy Chun - Crisis + Habit = Update',
+    contributor: "Wendy Chun",
+    file: 'WendyChun',
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales, libero quis maximus sollicitudin, sem leo eleifend elit, sed tempor quam orci et libero. Vivamus non consectetur nisi. Proin sed tincidunt tortor",
+    duration: "34:14",
+    rss: "rssfeed",    
+    howl: null
+  },
+  /*
+  {
+    title: 'Running Out',
+    file: 'running_out',
+    desc: "Here's a long description of the Running Out song. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id ultricies risus, eu feugiat massa. Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
+    contributor: "Anders Visti",
+    duration: "1:00",
+    rss: "rssfeed",    
+    howl: null
+  } 
+  */
+]);
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Bind our player controls.
@@ -398,11 +444,40 @@ volume.addEventListener('touchmove', move);
 
 
 ////////////////////////////////////////////////////////////
-// resize function
+// Setup the "waveform" animation.
+/*
+var wave = new SiriWave({
+  container: waveform,
+  width: window.innerWidth,
+  height: window.innerHeight * 0.3,
+  cover: true,
+  speed: 0.03,
+  amplitude: 0.7,
+  frequency: 2
+});
+wave.start();
+*/
+
+
+////////////////////////////////////////////////////////////
+// Update the height of the wave animation.
+// These are basically some hacks to get SiriWave.js to do what we want.
 var resize = function() {
   console.log("player resize was run!");
   var height = window.innerHeight * 0.3;
   var width = window.innerWidth;
+
+  /*
+  wave.height = height;
+  wave.height_2 = height / 2;
+  wave.MAX = wave.height_2 - 4;
+  wave.width = width;
+  wave.width_2 = width / 2;
+  wave.width_4 = width / 4;
+  wave.canvas.height = height;
+  wave.canvas.width = width;
+  wave.container.style.margin = -(height / 2) + 'px auto';
+  */
 
   // Update the position of the slider.
   var sound = player.playlist[player.index].howl;
@@ -411,17 +486,10 @@ var resize = function() {
     var barWidth = (vol * 0.9);
     sliderBtn.style.left = (window.innerWidth * barWidth + window.innerWidth * 0.05 - 25) + 'px';
   }
-
-  // redraw audio canvas img
-  drawAudioImg(player.audioCanvasCtx);
 };
 
 
+////////////////////////////////////////////////////////////
 // resize
 window.addEventListener('resize', resize);
 resize();
-
-
-export {
-  player
-}

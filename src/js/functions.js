@@ -16,7 +16,15 @@ const resize = () => {
 
 
 ///////////////////////////////////////////
+// return random integer
+const random = (number) => {
+  return Math.floor(Math.random() * number)
+}
+
+
+
+///////////////////////////////////////////
 // exporting all
 export {
-  resize
+  resize, random
 }

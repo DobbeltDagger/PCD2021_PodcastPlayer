@@ -1,11 +1,8 @@
-// import { p5 } from './libs/p5.js';
-// import './libs/p5.js';
-// const p5 = require('./libs/p5.js');
-// none of the above are good!
+import { player } from './libs/howler/player.js';
 
 ///////////////////////////////////////////////////////////
 export function App() {
-
+  // ...
 }
 
 ///////////////////////////////////////////////////////////
@@ -21,12 +18,14 @@ App.prototype = {
   },
 
 
+  /*
   ///////////////////////////////////////////////////////////
   draw: function() {
     // this just draws in a loop
     // requestAnimationFrame(draw);
     console.log("Drawing")
   },
+  */
 
 
   /*
