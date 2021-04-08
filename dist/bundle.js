@@ -128,8 +128,6 @@
         // audioBuffer!
         // https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer
 
-        
-
 
       }
       
@@ -146,7 +144,8 @@
     // run through all pixs
     ctx.fillStyle = 'white';
     for (let i = 0; i < (w-1); i++) {
-      ctx.fillRect(i, 60, i+1, -random(50));
+      const h = random(50);
+      ctx.fillRect(i, 60-h, 1, h);
     }
   };
 

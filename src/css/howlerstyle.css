@@ -163,76 +163,9 @@ p {
   /* border: 1px solid purple; */
 }
 
-/* ****************************************************************************** */
-
-#titleWrapper {
-  position: absolute;
-  bottom: 60px;
-  left: 0px;
-  width: 100vw;
-  background-color: var(--white-bg-color);
-  color: var(--main-text-color);
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-#track {
-  flex: 0 0 460px; /* 20%; */
-  padding: 1rem;
-}
-#subtitle {
-  flex: 1; /* 0 0 50%; */
-  max-width: 800px;
-  padding: 1rem 2rem 1rem 0px;
-}
-/*
-#metadata {
-  flex: 0 0 30%;
-  max-width: 800px;
-  padding: 1rem;
-}
-*/
 
 
 
-/* ****************************************************************************** */
-/* controls */
-.controlsWrapper {
-  position: absolute;
-  width: 300px; /* 100%; */
-  height: 60px; /* 35px; /* 70px; */
-  bottom: 0px; /* 1.75rem; /* 3%; */
-  left: 0px;
-  /* background: rgba(0,0,0,0.5); */
-  background-color: var(--white-bg-color);
-  color: var(--main-text-color);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn {
-  /* position: absolute; */
-  cursor: pointer;
-  opacity: 0.9; /* 0.9; */
-  -webkit-user-select: none;
-  user-select: none;
-  text-indent: -999em;
-  border-right: 1px solid rgba(0,0,0,0.1);
-  width: 60px;
-  height: 60px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 35%; /* contain; */
-}
-.btn:hover {
-  opacity: 1;
-}
 
 /* this is done by greyButtons css */
 
@@ -266,28 +199,6 @@ p {
   }
 }
 
-
-/* ****************************************************************************** */
-/* durationWrapper */
-
-.durationWrapper {
-  position: absolute;
-  width: 160px; /* 100%; */
-  height: 60px;
-  bottom: 0px;
-  left: 300px;
-  /* background: rgba(0,0,0,0.4); /* rgba(17, 10, 20, 0.65); */
-  background-color: var(--white-bg-color);
-  color: var(--main-text-color);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  font-size: 22px; /* 26px; */
-  font-weight: 300;
-  border-right: 1px solid rgba(0,0,0,0.1);
-}
 
 
 
@@ -330,19 +241,10 @@ p {
   background-color: transparent; /* rgba(0,0,0,0.25); */
   display: block; /* none; */
 }
-/* listShade is to gray out controls while picking from playlist */
-#listShade {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  width: calc(100vw - 60px);
-  height: 60px;
-  background-color: var(--dark-bg-color); /* rgba(0,0,0,0.25); */
-  opacity: 0.35;
-}
+
 #list {
   width: 100%;
-  height: calc(80% - 60px); /* 100%; */
+  /* height: calc(80% - 60px); /* 100%; */
   position: absolute;
   top: 20%; /* 0; */
   left: 0;
@@ -558,6 +460,230 @@ p {
   from { opacity: 1; }
   to   { opacity: 0; }
 }
+
+
+
+
+/* ************************************************************************************* */
+/* ************************************************************************************* */
+/* ************************************************************************************* */
+/* media queries */
+
+@media screen {
+
+  #titleWrapper {
+    position: absolute;
+    flex-direction: column;
+    bottom: 110px; /* 120px;*/
+    width: 100vw;
+    background-color: var(--white-bg-color);
+    color: var(--main-text-color);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(8, 3, 3, 0.1);    
+  }
+  #titleWrapper #track {
+    width: 100%;
+    flex: 1;
+    padding: 1rem;
+  }
+  #titleWrapper #subtitle {
+    width: 100%;
+    max-width: auto;
+    padding: 0rem 1rem 1rem 1rem;
+  }
+
+  .durationWrapper {
+    position: absolute;
+    height: 50px; /* 60px; */
+    bottom: 0px;
+    left: 300px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;    
+    width: 0px;
+    overflow: hidden;
+    border-right: 0px;
+  }
+
+  /* peakFile */
+  .peakFileWrapper {
+    position: absolute;
+    bottom: 50px; /* 60px; */
+    left: 0px;
+    width: 100%;
+    /* border-bottom: 1px solid tomato; */
+  }
+
+  /* controls */
+  .controlsWrapper {
+    position: absolute;
+    width: 100%; /* 300px; /* 100%; */
+    height: 50px; /* 35px; /* 70px; */
+    bottom: 0px; /* 1.75rem; /* 3%; */
+    left: 0px;
+    /* background: rgba(0,0,0,0.5); */
+    background-color: var(--white-bg-color);
+    color: var(--main-text-color);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+    
+  .btn {
+    /* position: absolute; */
+    cursor: pointer;
+    opacity: 0.9; /* 0.9; */
+    -webkit-user-select: none;
+    user-select: none;
+    text-indent: -999em;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    width: 20%; /* 50px; /* 60px; */
+    height: 50px; /* 60px; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20%; /* 35%; /* contain; */
+  }
+  .btn:hover {
+    opacity: 1;
+  }
+
+
+  /* list */
+  #list {
+    height: calc(80% - 50px);
+  }
+
+  /* listShade is to gray out controls while picking from playlist */
+  #listShade {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: calc(100vw - 20%); /* 50px); */
+    height: 50px;
+    background-color: var(--dark-bg-color); /* rgba(0,0,0,0.25); */
+    opacity: 0.35;
+  }
+
+
+  .list-song {
+    flex: 0 0 100%; /* 0 0 50%; */
+  }
+
+}
+
+
+/* ************************************************************************************* */
+/* ************************************************************************************* */
+@media screen and (min-width: 480px) {
+
+  .durationWrapper {
+    width: calc(100vw - 300px); /* 160px; /* 100%; */
+    background-color: var(--white-bg-color);
+    color: var(--main-text-color);
+    font-size: 22px; /* 26px; */
+    font-weight: 300;
+    border-right: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .btn {
+    width: 50px;
+    background-size: 35%;
+  }  
+
+  /* listShade is to gray out controls while picking from playlist */
+  #listShade {
+    width: calc(100vw - 50px);
+  }
+
+}
+
+
+/* ************************************************************************************* */
+/* ************************************************************************************* */
+@media screen and (min-width: 800px) {
+
+  #titleWrapper {
+    position: absolute;
+    bottom: 60px;
+    left: 0px;
+    width: 100vw;
+    background-color: var(--white-bg-color);
+    color: var(--main-text-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  #titleWrapper #track {
+    flex: 0 0 460px; /* 20%; */
+  }
+  #titleWrapper #subtitle {
+    flex: 1; /* 0 0 50%; */
+    max-width: 800px;
+    padding: 1rem 2rem 1rem 0px;
+  }
+
+  .durationWrapper {
+    width: 160px; /* 100%; */
+    height: 60px;
+  }  
+
+  /* peakFile */
+  .peakFileWrapper {
+    position: absolute;
+    bottom: 0px;
+    left: 460px;
+    width: calc(100vw - 460px); /* 100%; */
+    /* border-bottom: 1px solid tomato; */
+  }
+  
+  /* controls */
+  .controlsWrapper {
+    position: absolute;
+    width: 300px; /* 100%; */
+    height: 60px; /* 35px; /* 70px; */
+    bottom: 0px; /* 1.75rem; /* 3%; */
+    left: 0px;
+  }  
+
+  .btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* list */
+  #list {
+    height: calc(80% - 60px);
+  }
+
+  /* listShade is to gray out controls while picking from playlist */
+  #listShade {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: calc(100vw - 60px);
+    height: 60px;
+    background-color: var(--dark-bg-color); /* rgba(0,0,0,0.25); */
+    opacity: 0.35;
+  }
+
+
+  .list-song {
+    flex: 0 0 50%; /* 0 0 50%; */
+  }
+
+
+}
+
+
 
 
 
