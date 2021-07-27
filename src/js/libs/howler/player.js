@@ -47,6 +47,9 @@ const Player = function(playlist) {
     var icon = document.createElement('div');
     icon.className = 'list-icon';
     icon.innerHTML = ""; // "*";
+    const bgImgPath = "images/portraits/" + song.thumb;
+    // console.log("bgImgPath:", bgImgPath);
+    icon.style.backgroundImage = "url(" +  bgImgPath + ")";
     // title
     var title = document.createElement('div');
     title.className = 'list-title';
