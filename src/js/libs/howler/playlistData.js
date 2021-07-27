@@ -4,6 +4,20 @@ const getPlaylistData = () => {
 
   // data array
   const data = [
+
+    {
+      title: 'A conversation with Kristoffer Ørum',
+      contributor: "Anders Visti",
+      thumb: "DSantos.jpg",
+      file: 'Heidi_SanktNicolausGade6',
+      desc: "Nulla nec tristique nisl. Sed rhoncus, turpis sit amet accumsan varius, augue eros mattis tellus, vel rutrum arcu nibh eget nisl.",
+      duration: "2:06",
+      rss: "rssfeed",
+      howl: null
+    },
+
+
+
     {
       title: 'Why code?',
       contributor: "Heidi Nikolaisen",
