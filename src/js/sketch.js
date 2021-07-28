@@ -78,27 +78,54 @@ class Particle {
   changeColor() {
     let alpha = random() ** 0.8 * random(random(140, 160), random(160, random(160, 255)));
     alpha = map(alpha, 0, 255, 0, 200)
-    const weightings = [{
+
+    const weightings = [
+      {
         chance: 0.36,
-        color: color(103, 197, 218, alpha)
+        color: color(64,224,208, alpha) 
       },
       {
         chance: 0.08,
-        color: color(255, 255, 255, alpha)
+        color: color(0, 250, 0, alpha) 
       },
       {
         chance: 0.28,
-        color: color(131, 113, 161, alpha)
-      },
-      {
-        chance: 0.28,
-        color: color(193, 56, 135, alpha)
+        color: color(0, 254, 25, alpha)
       },
       {
         chance: 0.16,
-        color: lerpColor(color(0, 241, 214, alpha), color(255, 0, 110, alpha), random())
+        color: color(255,215,0, alpha) 
+      },
+      {
+        chance: 0.16,
+        color: lerpColor(color(10, 250, 55, alpha), color(255, 0, 110, alpha), random())
       }
     ]
+    /*
+    // BLUE ones - main!
+    const weightings = [
+      {
+        chance: 0.36,
+        color: color(255, 0, 0, alpha)
+      },
+      {
+        chance: 0.08,
+        color: color(0, 0, 250, alpha)
+      },
+      {
+        chance: 0.28,
+        color: color(0, 250, 250, alpha)
+      },
+      {
+        chance: 0.28,
+        color: color(0, 100, 255, alpha) 
+      },
+      {
+        chance: 0.16,
+        color: lerpColor(color(10, 0, 255, alpha), color(255, 0, 110, alpha), random())
+      }
+    ]
+    */
     const totalWeights = weightings.reduce((acc, val) => acc + val.chance, 0);
     let w = random(totalWeights);
 

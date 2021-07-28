@@ -203,7 +203,6 @@ p {
 
 
 
-
 /* ****************************************************************************** */
 /* peakFileWrapper */
 .peakFileWrapper {
@@ -249,7 +248,7 @@ p {
   /* height: calc(80% - 60px); /* 100%; */
   position: absolute;
   /* top: 20%; /* 0; */
-  bottom: 60px;
+  /* bottom: 60px; */
   left: 0;
   padding: 1rem 0px;
   /* border: 1px solid white; */
@@ -329,7 +328,7 @@ p {
   margin-left: 8rem; /* 150px; /* 50px; */
 }
 .list-contributor {
-  color: tomato; /* lightblue; */
+  color: green; /* tomato; /* lightblue; */
   margin-left: 8rem; /* 150px; /* 50px; */
 }
 .list-trackLength {
@@ -566,6 +565,7 @@ p {
   /* list */
   #list {
     max-height: calc(80% - 50px);
+    bottom: 100px;
   }
 
   /* listShade is to gray out controls while picking from playlist */
@@ -671,6 +671,7 @@ p {
   /* list */
   #list {
     max-height: calc(80% - 60px);
+    bottom: 60px;
   }
 
   /* listShade is to gray out controls while picking from playlist */
