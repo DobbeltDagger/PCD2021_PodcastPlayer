@@ -4,7 +4,8 @@
 :root {
   --white-bg-color: #FCFCFC;
   --dark-bg-color: #110A14; /* rgb(17, 10, 20) */
-  --main-text-color: var(--main-text-color);
+  --main-text-color: #222222;
+  --link-color: #008000; /* green */
 }
 
 
@@ -424,7 +425,7 @@ p {
   width: 0%;
   height: 60px; /* 100%; */
   background-color: rgba(255,255,255,0.25);
-  border-right: 1px solid tomato;
+  border-right: 1px solid var(--link-color); /* tomato; */
   z-index: 0; /* -1; /* 0px; /*  -1; */
   pointer-events: none;
 }
@@ -595,7 +596,7 @@ p {
     width: calc(100vw - 300px); /* 160px; /* 100%; */
     background-color: var(--white-bg-color);
     color: var(--main-text-color);
-    font-size: 22px; /* 26px; */
+    font-size: 21px; /* 22px; /* 26px; */
     font-weight: 300;
     border-right: 1px solid rgba(0,0,0,0.1);
   }
